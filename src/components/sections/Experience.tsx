@@ -85,7 +85,11 @@ export function Experience() {
                 <div className={`w-full md:w-[calc(50%-2rem)] ${
                   index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'
                 }`}>
-                  <div className="bg-[#1e1e24] border border-white/5 rounded-xl p-6 hover:border-[#6366f1]/30 transition-all duration-300">
+                    <motion.div
+                        className="bg-[#1e1e24] border border-white/5 rounded-xl p-6 hover:border-[#6366f1]/30 transition-colors duration-200"
+                        whileHover={{ y: -5, scale: 1.02 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                    >
                     {/* Titre */}
                     <h3 className="text-xl font-bold text-white mb-2">
                       {exp.title}
@@ -119,13 +123,11 @@ export function Experience() {
                           </motion.span>
                       ))}
                     </div>
-                  </div>
+                    </motion.div>
                 </div>
 
-                {/* Point sur la timeline (centré) */}
                 <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#6366f1] rounded-full border-4 border-[#0f0f14] z-10"></div>
 
-                {/* Espace vide de l'autre côté */}
                 <div className="hidden md:block w-[calc(50%-2rem)]"></div>
               </motion.div>
             ))}

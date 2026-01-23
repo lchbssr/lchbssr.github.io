@@ -58,7 +58,7 @@ export function Formation() {
   return (
       <section id="education" className="py-24 px-6 lg:px-12 bg-[#0a0a0f]">
         <div className="max-w-5xl mx-auto" ref={ref}>
-          {/* Section title */}
+          {/* Titre */}
           <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -92,7 +92,17 @@ export function Formation() {
                     <div className={`w-full md:w-[calc(50%-2rem)] ${
                         index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'
                     }`}>
-                      <div className="bg-[#1e1e24] border border-white/5 rounded-xl p-6 hover:border-[#6366f1]/30 transition-all duration-300">
+                      <motion.div
+                          className="bg-[#1e1e24] border border-white/5 rounded-xl p-6 hover:border-[#6366f1]/30 transition-colors duration-200"
+                          whileHover={{
+                            y: -5,
+                            scale: 1.02
+                          }}
+                          transition={{
+                            duration: 0.2,
+                            ease: "easeOut"
+                          }}
+                      >
                         {/* Badge niveau + status */}
                         <div className="mb-3 flex gap-2 flex-wrap">
                       <span className="px-3 py-1 bg-[#6366f1]/20 text-[#6366f1] rounded-full text-xs font-semibold">
@@ -105,7 +115,7 @@ export function Formation() {
                           )}
                         </div>
 
-                        {/* Title */}
+                        {/* Titre */}
                         <h3 className="text-xl font-bold text-white mb-2">
                           {formation.title}
                         </h3>
@@ -138,7 +148,7 @@ export function Formation() {
                               </motion.span>
                           ))}
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
 
                     <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#6366f1] rounded-full border-4 border-[#0a0a0f] z-10"></div>

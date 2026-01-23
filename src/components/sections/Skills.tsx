@@ -119,20 +119,21 @@ export function Skills() {
 
                   {/* Cartes de compétences */}
                   <div className="flex flex-wrap justify-center gap-6">
-                    {category.skills.map((skill, skillIndex) => (
+                    {category.skills.map((skill) => (
                         <motion.div
                             key={skill.name}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                            transition={{
-                              duration: 0.3,
-                              delay: categoryIndex * 0.1 + skillIndex * 0.05
-                            }}
                             whileHover={{
                               y: -8,
+                              scale: 1.05,
                               boxShadow: '0 10px 30px rgba(99, 102, 241, 0.3)'
                             }}
-                            className="bg-[#1e1e24] border border-white/5 rounded-xl p-6 text-center hover:border-[#6366f1]/30 transition-all duration-300 cursor-pointer w-36 h-36 flex flex-col items-center justify-center"
+                            transition={{
+                              duration: 0.2,
+                              ease: "easeOut"
+                            }}
+                            className="bg-[#1e1e24] border border-white/5 rounded-xl p-6 text-center hover:border-[#6366f1]/30 transition-colors duration-200 cursor-pointer w-36 h-36 flex flex-col items-center justify-center"
                         >
                           {/* Icône officielle */}
                           <div className="mb-3 flex items-center justify-center h-16">
