@@ -14,7 +14,7 @@ export function Projects() {
       type: 'Application Web',
       image: './projects/smartexpo.png',
       technologies: ['HTML', 'CSS', 'PHP', 'CodeIgniter', 'Bootstrap', 'SQL'],
-      liveUrl: 'https://lchaboissier.github.io/smartexpo',
+      liveUrl: null,
       codeUrl: 'https://github.com/lchaboissier/smartexpo',
     },
     {
@@ -32,7 +32,7 @@ export function Projects() {
       type: 'Application Web',
       image: './projects/pixel.png',
       technologies: ['HTML', 'CSS', 'PHP', 'Symfony', 'SQL', 'Docker'],
-      liveUrl: 'https://lchaboissier.github.io/pixel',
+      liveUrl: null,
       codeUrl: 'https://github.com/lchaboissier/pixel',
     },
     {
@@ -41,7 +41,7 @@ export function Projects() {
       type: 'Application Mobile',
       image: './projects/foodeat.png',
       technologies: ['Swift', 'API'],
-      liveUrl: 'https://lchaboissier.github.io/foodeat',
+      liveUrl: null,
       codeUrl: 'https://github.com/lchaboissier/foodeat',
     },
   ];
@@ -119,18 +119,25 @@ export function Projects() {
 
                     {/* Boutons */}
                     <div className="flex gap-3">
-                      <motion.a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-[#6366f1] text-white rounded-lg text-sm font-medium"
-                          whileHover={{ scale: 1.05, backgroundColor: '#5558e3' }}
-                          whileTap={{ scale: 0.98 }}
-                          transition={{ duration: 0.15 }}
-                      >
-                        <ExternalLink size={16} />
-                        Voir le site
-                      </motion.a>
+                      {project.liveUrl ? (
+                          <motion.a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-[#6366f1] text-white rounded-lg text-sm font-medium"
+                              whileHover={{ scale: 1.05, backgroundColor: '#5558e3' }}
+                              whileTap={{ scale: 0.98 }}
+                              transition={{ duration: 0.15 }}
+                          >
+                            <ExternalLink size={16} />
+                            Voir le site
+                          </motion.a>
+                      ) : (
+                          <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-700/50 text-gray-400 rounded-lg text-sm font-medium cursor-not-allowed">
+                            <ExternalLink size={16} />
+                            Indisponible
+                          </div>
+                      )}
                       <motion.a
                           href={project.codeUrl}
                           target="_blank"

@@ -29,23 +29,20 @@ export function About() {
               className="text-gray-400 space-y-4 leading-relaxed"
           >
             <p>
-              Développeur de <span className="text-[#6366f1] font-semibold">24 ans</span> passionné par l'informatique,
-              je me suis spécialisé dans le développement web dès le BTS SIO (option SLAM). J'y ai acquis des bases solides en{' '}
+              J'ai débuté mon parcours de développeur avec le BTS SIO. C'est là que j'ai posé mes premières bases en{' '}
               <span className="text-[#6366f1] font-semibold">PHP</span> et{' '}
-              <span className="text-[#6366f1] font-semibold">Laravel</span>, que j'ai transformées en une véritable maîtrise de{' '}
-              <span className="text-[#6366f1] font-semibold">Symfony</span> au fil de mes expériences professionnelles.
+              <span className="text-[#6366f1] font-semibold">Laravel</span>, avant de faire de{' '}
+              <span className="text-[#6366f1] font-semibold">Symfony</span> ma spécialité au fil de mes expériences en stage et en alternance.
             </p>
             <p>
-              En parallèle, j'ai exploré diverses technologies <span className="text-[#6366f1] font-semibold">web et mobiles</span> pour
-              renforcer ma logique de développement, apprendre à manipuler des{' '}
-              <span className="text-[#6366f1] font-semibold">APIs</span> et créer des{' '}
-              <span className="text-[#6366f1] font-semibold">interfaces réactives</span>.
+              Pour avoir une vision complète des projets, je ne me suis pas limité au back-end. J'ai exploré le{' '}
+              <span className="text-[#6366f1] font-semibold">développement mobile</span> et la manipulation d'{' '}
+              <span className="text-[#6366f1] font-semibold">APIs</span> pour être capable de créer des interfaces modernes et réactives.
             </p>
             <p>
-              Bientôt diplômé de mon <span className="text-[#6366f1] font-semibold">Mastère</span>, je suis à la recherche d'un{' '}
-              <span className="text-[#6366f1] font-semibold">CDI</span> à partir de{' '}
-              <span className="text-[#6366f1] font-semibold">début octobre 2026</span>. Mon objectif est d'intégrer une équipe
-              expérimentée pour contribuer à vos projets tout en continuant de perfectionner mon expertise technique à vos côtés.
+              Actuellement en fin de <span className="text-[#6366f1] font-semibold">Mastère</span>, mon objectif est de transformer ces années d'apprentissage en expertise au sein d'une équipe. Je suis à la recherche d'un{' '}
+              <span className="text-[#6366f1] font-semibold">CDI</span> dès{' '}
+              <span className="text-[#6366f1] font-semibold">début octobre 2026</span>, pour être prêt à m'investir pleinement dans vos méthodes et vos projets.
             </p>
           </motion.div>
         </div>

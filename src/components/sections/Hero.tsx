@@ -46,10 +46,11 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Développeur Web en alternance passionné par le domaine de l'Informatique. Je maîtrise
-          les technologies Web avec{' '}
-          <span className="text-[#6366f1] font-medium">PHP</span> et{' '}
-          <span className="text-[#6366f1] font-medium">Symfony</span>.{' '}
+          Développeur Web en alternance, je réalise des applications web fonctionnelles et adaptées aux besoins.
+          Spécialisé en <span className="text-[#6366f1] font-semibold">PHP/Symfony</span>,
+          j'utilise également des technologies comme <span className="text-[#6366f1] font-semibold">Angular</span>,{' '}
+          <span className="text-[#6366f1] font-semibold">Docker</span> ou{' '}
+          <span className="text-[#6366f1] font-semibold">React</span> pour répondre aux défis techniques.
         </motion.p>
 
         <motion.div
