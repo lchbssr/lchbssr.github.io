@@ -133,9 +133,15 @@ export function Projects() {
                             Voir le site
                           </motion.a>
                       ) : (
-                          <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-700/50 text-gray-400 rounded-lg text-sm font-medium cursor-not-allowed">
-                            <ExternalLink size={16} />
-                            Indisponible
+                          <div className="flex-1 relative group/tooltip">
+                            <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-700/50 text-gray-400 rounded-lg text-sm font-medium cursor-not-allowed">
+                              <ExternalLink size={16} />
+                              Indisponible
+                            </div>
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-[#6366f1] text-white text-xs font-medium rounded-lg opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg">
+                              Le site arrive prochainement !
+                              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#6366f1]"></div>
+                            </div>
                           </div>
                       )}
                       <motion.a
