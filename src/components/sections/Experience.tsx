@@ -48,10 +48,9 @@ export function Experience() {
       location: 'La Roche-sur-Yon, France',
       missions: [
         'Développement d\'une application Web avec le framework Symfony',
-        'Création de fonctionnalités',
-        'Réalisation de tests unitaires et d\'intégration pour garantir la qualité du code',
+        'Création de fonctionnalités backend',
       ],
-      technologies: ['Symfony', 'PHP', 'MySQL', 'HTML/CSS'],
+      technologies: ['Symfony', 'PHP', 'MySQL', 'HTML/CSS', 'JavaScript'],
     },
     {
       title: 'Stage - Développeur Web',
