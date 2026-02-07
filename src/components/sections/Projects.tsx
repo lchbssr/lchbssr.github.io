@@ -26,7 +26,7 @@ export function Projects() {
       image: './projects/smartexpo.png',
       technologies: ['HTML', 'CSS', 'PHP', 'CodeIgniter', 'Bootstrap', 'SQL'],
       liveUrl: 'https://dev-data.alwaysdata.net/',
-      codeUrl: 'https://github.com/lchaboissier/smartexpo',
+      codeUrl: 'https://github.com/lchbssr/smartexpo',
     },
     {
       title: 'Keywatch',
@@ -34,8 +34,8 @@ export function Projects() {
       type: 'Application Web',
       image: './projects/keywatch.png',
       technologies: ['HTML', 'SCSS', 'TypeScript', 'Angular'],
-      liveUrl: 'https://lchaboissier.github.io/keywatch',
-      codeUrl: 'https://github.com/lchaboissier/keywatch',
+      liveUrl: 'https://lchbssr.github.io/keywatch',
+      codeUrl: 'https://github.com/lchbssr/keywatch',
     },
     {
       title: 'Pixel',
@@ -44,7 +44,7 @@ export function Projects() {
       image: './projects/pixel.png',
       technologies: ['HTML', 'CSS', 'PHP', 'Symfony', 'SQL', 'Docker'],
       liveUrl: null,
-      codeUrl: 'https://github.com/lchaboissier/pixel',
+      codeUrl: 'https://github.com/lchbssr/pixel',
       galleryImages: [
         './projects/pixel/Page d\'accueil.png',
         './projects/pixel/Page d\'accueil (après connexion).png',
@@ -62,7 +62,7 @@ export function Projects() {
       image: './projects/foodeat.png',
       technologies: ['Swift', 'API'],
       liveUrl: null,
-      codeUrl: 'https://github.com/lchaboissier/foodeat',
+      codeUrl: 'https://github.com/lchbssr/foodeat',
       galleryImages: [
         './projects/foodeat/Accueil.png',
         './projects/foodeat/Détail.png',

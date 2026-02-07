@@ -85,7 +85,7 @@ export function Contact() {
           {[
             { icon: Mail, href: 'mailto:lucachaboissier@outlook.fr', label: 'Email' },
             { icon: Linkedin, href: 'https://www.linkedin.com/in/luca-chaboissier/', label: 'LinkedIn' },
-            { icon: Github, href: 'https://github.com/lchaboissier', label: 'GitHub' },
+            { icon: Github, href: 'https://github.com/lchbssr', label: 'GitHub' },
           ].map((social) => (
             <motion.a
               key={social.label}
