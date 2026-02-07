@@ -6,7 +6,7 @@ import { Lightbulb, Target, Zap, CheckCircle2, Clock, Eye } from 'lucide-react';
 export function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [selectedFilter, setSelectedFilter] = useState<string>("Toutes");
+  const [selectedFilter, setSelectedFilter] = useState<string>("Hard Skills");
 
   const skillCategories = [
     {

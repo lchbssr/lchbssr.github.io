@@ -74,7 +74,7 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 lg:px-12 bg-gray-50 dark:bg-[#0f0f14]">
+    <section id="projects" className="py-24 px-6 lg:px-12 bg-gray-50 dark:bg-[#0a0a0f]">
       <div className="max-w-7xl mx-auto" ref={ref}>
         {/* Titre de section */}
         <motion.div

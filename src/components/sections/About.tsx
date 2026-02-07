@@ -7,7 +7,7 @@ export function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 px-6 lg:px-12 relative overflow-hidden bg-white dark:bg-[#0f0f14]">
+    <section id="about" className="py-24 px-6 lg:px-12 relative overflow-hidden bg-white dark:bg-[#0a0a0f]">
       <div className="max-w-5xl mx-auto relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
