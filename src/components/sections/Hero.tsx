@@ -55,7 +55,6 @@ export function Hero() {
           Alternant Développeur Web
         </motion.h2>
 
-        {/* Description */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

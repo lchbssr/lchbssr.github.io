@@ -74,7 +74,6 @@ export function ImageGallery({ images, isOpen, onClose, projectTitle }: ImageGal
                         className="relative w-full max-w-6xl max-h-[90vh] flex flex-col"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Header */}
                         <div className="flex items-center justify-between mb-4 px-4">
                             <div className="flex-1">
                                 <h3 className="text-white text-xl font-bold">{projectTitle}</h3>
@@ -110,7 +109,6 @@ export function ImageGallery({ images, isOpen, onClose, projectTitle }: ImageGal
                                 />
                             </AnimatePresence>
 
-                            {/* Navigation gauche/droite */}
                             {images.length > 1 && (
                                 <>
                                     <motion.button

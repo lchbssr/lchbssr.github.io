@@ -60,7 +60,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-6 border-t border-gray-200 dark:border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
           <p className="text-gray-600 dark:text-gray-400 text-center sm:text-left">
             © {currentYear} Luca Chaboissier. Tous droits réservés.
@@ -68,7 +67,6 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Scroll to top button */}
       {showScrollTop && (
           <motion.button
               onClick={scrollToTop}

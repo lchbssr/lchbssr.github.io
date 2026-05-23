@@ -146,17 +146,17 @@ export function Formation() {
                         </div>
 
                         {/* Missions */}
-                        <ul className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                          {formation.missions && (
-                              <ul className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                                {formation.missions.map((mission, i) => (
-                                    <li key={i} className="mb-1">
-                                      <span className="text-[#6366f1] font-medium">•</span> {mission}
-                                    </li>
-                                ))}
-                              </ul>
-                          )}
-                        </ul>
+
+                        {formation.missions && (
+                            <ul className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                              {formation.missions.map((mission, i) => (
+                                  <li key={i} className="mb-1">
+                                    <span className="text-[#6366f1] font-medium">•</span> {mission}
+                                  </li>
+                              ))}
+                            </ul>
+                        )}
+
 
                         {/* Technologies */}
                         <div className="flex flex-wrap gap-2">

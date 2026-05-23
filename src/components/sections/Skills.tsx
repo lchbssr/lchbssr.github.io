@@ -98,39 +98,28 @@ export function Skills() {
     {
       name: 'Curieux',
       icon: Lightbulb,
-      description: 'J\'explore de nouvelles approches pour progresser en continu tout en gardant une veille active.'
+      description: 'Je teste régulièrement de nouveaux outils, que ce soit différents stacks en web, mobile, cloud ou IA.'
     },
     {
       name: 'Autonome',
       icon: Target,
-      description: 'Je prends en charge mes sujets de bout en bout, avec le sens des priorités.'
+      description: 'J\'avance seul sur mes sujets, et je demande de l\'aide quand il faut.'
     },
     {
       name: 'Adaptable',
       icon: Zap,
-      description: 'Je m’ajuste rapidement aux changements et imprévus, en gardant en vue les enjeux que ça peut avoir.'
+      description: 'Je m’ajuste rapidement aux changements et aux imprévus sans drama.'
     },
     {
       name: 'Persévérant',
       icon: CheckCircle2,
-      description: 'J\'analyse et j\'itère méthodiquement jusqu\'à identifier la solution optimale.'
-    },
-    {
-      name: 'Patient',
-      icon: Clock,
-      description: 'Je privilégie la qualité et la clarté, même si cela demande du temps.'
-    },
-    {
-      name: 'Attentif aux détails',
-      icon: Eye,
-      description: 'Je soigne les détails tout en restant pragmatique pour respecter les délais.'
-    },
+      description: 'Je ne lâche pas un problème tant que je ne l\'ai pas compris, même si ça prend du temps.'
+    }
   ];
 
   return (
       <section id="skills" className="py-24 px-6 lg:px-12 bg-white dark:bg-[#0f0f14]">
         <div className="max-w-7xl mx-auto" ref={ref}>
-          {/* Titre de section */}
           <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -236,7 +225,6 @@ export function Skills() {
                               />
                             </div>
 
-                            {/* Nom en bas */}
                             <div className="text-gray-900 dark:text-white font-medium text-sm">
                               {skill.name}
                             </div>
@@ -275,7 +263,6 @@ export function Skills() {
                         className="bg-gray-100 dark:bg-[#1e1e24] border border-gray-200 dark:border-white/5 rounded-xl p-6 hover:border-[#6366f1]/30 transition-colors duration-200 cursor-pointer"
                     >
                       <div className="flex items-start gap-4">
-                        {/* Icône */}
                         <div className="shrink-0 w-12 h-12 bg-[#6366f1]/10 rounded-lg flex items-center justify-center">
                           <Icon className="w-6 h-6 text-[#6366f1]" />
                         </div>
