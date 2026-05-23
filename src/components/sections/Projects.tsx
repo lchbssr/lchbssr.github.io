@@ -76,7 +76,6 @@ export function Projects() {
   return (
     <section id="projects" className="py-24 px-6 lg:px-12 bg-gray-50 dark:bg-[#0a0a0f]">
       <div className="max-w-7xl mx-auto" ref={ref}>
-        {/* Titre de section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -125,7 +124,6 @@ export function Projects() {
                       {project.title}
                     </h3>
 
-                    {/* Description */}
                     <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
                       {project.description}
                     </p>
