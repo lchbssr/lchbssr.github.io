@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import {useRef, useState } from 'react';
-import { Lightbulb, Target, Zap, CheckCircle2, Clock, Eye } from 'lucide-react';
+import { Lightbulb, Target, Zap, CheckCircle2 } from 'lucide-react';
 
 export function Skills() {
   const ref = useRef(null);
@@ -25,6 +25,7 @@ export function Skills() {
       title: 'Frontend',
       skills: [
         { name: 'React', logo: 'https://cdn.simpleicons.org/react' },
+        { name: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs', invertOnDark: true },
         { name: 'Angular', logo: 'https://cdn.simpleicons.org/angular/DD0031' },
         { name: 'Svelte', logo: 'https://cdn.simpleicons.org/svelte' },
         { name: 'HTML5', logo: 'https://cdn.simpleicons.org/html5' },
