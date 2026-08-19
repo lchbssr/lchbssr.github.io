@@ -18,7 +18,7 @@ export function Hero() {
             <div className="w-full h-full rounded-full bg-gray-100 dark:bg-[#1a1a1f] flex items-center justify-center overflow-hidden">
               <img
                   src="assets/profileImage.jpg"
-                  alt="Photo de profil de Louis Chaboissier"
+                  alt="Photo de profil de Luca Chaboissier"
                   className="w-full h-full object-cover"
               />
             </div>
