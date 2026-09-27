@@ -10,14 +10,14 @@ export function Experience() {
     {
       title: 'Alternance - Développeur Backend Symfony',
       company: 'APRIL Marine',
-      period: 'Octobre 2024 - Maintenant',
+      period: 'Octobre 2024 - Septembre 2026',
       location: 'Les Sables d\'Olonne, France',
       missions: [
         'Participation à des projets de parcours de vente de gestion d\'assurance et application mobile',
         'Développement de composants applicatifs en collaboration avec les équipes métiers et techniques',
         'Réalisation de tests et maintenance des applications'
       ],
-      technologies: ['PHP', 'Symfony', 'MySQL', 'Docker', 'Podman', 'RabbitMQ', 'Gravitee', 'Git', 'GitLab', 'Jira', 'Confluence'],
+      technologies: ['PHP', 'Symfony', 'MySQL', 'PostgreSQL', 'Docker', 'Podman', 'RabbitMQ', 'Gravitee', 'Git', 'GitLab', 'Jira', 'Confluence'],
     },
     {
       title: 'Stage - Développeur Informatique',

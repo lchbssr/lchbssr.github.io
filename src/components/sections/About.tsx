@@ -36,13 +36,14 @@ export function About() {
             </p>
             <p>
               Pour avoir une vision complète des projets, je ne me suis pas limité au back-end. J'ai exploré le{' '}
-              <span className="text-[#6366f1] font-semibold">développement mobile</span> et la manipulation d'{' '}
+              <span className="text-[#6366f1] font-semibold">développement mobile</span> et la manipulation d'{''}
               <span className="text-[#6366f1] font-semibold">APIs</span> pour être capable de créer des interfaces modernes et réactives.
             </p>
             <p>
-              Actuellement en fin de <span className="text-[#6366f1] font-semibold">Mastère</span>, mon objectif est de transformer ces années d'apprentissage en expertise au sein d'une équipe. Je suis à la recherche d'un{' '}
-              <span className="text-[#6366f1] font-semibold">CDI</span> dès{' '}
-              <span className="text-[#6366f1] font-semibold">début octobre 2026</span>, pour être prêt à m'investir pleinement dans vos méthodes et vos projets.
+              Fort de deux ans d'alternance chez <span className="text-[#6366f1] font-semibold">APRIL Marine</span> sur des APIs métier et de mon <span className="text-[#6366f1] font-semibold">Mastère</span> qui touche à sa fin, je recherche aujourd'hui d'un poste de{' '}
+              <span className="text-[#6366f1] font-semibold">développeur</span>, idéalement en{' '}
+              <span className="text-[#6366f1] font-semibold">CDI</span>, disponible{' '}
+              <span className="text-[#6366f1] font-semibold">immédiatement</span>, pour m'investir pleinement dans vos méthodes et vos projets.
             </p>
           </motion.div>
         </div>

@@ -8,12 +8,11 @@ export function Formation() {
 
   const formations = [
     {
-      title: 'Mastère Expert en Développement Web',
+      title: 'Mastère Expert en Développement Full Stack',
       school: 'Nantes Ynov Campus',
       period: 'Octobre 2024 - Septembre 2026',
       location: 'Nantes, France',
       level: 'Bac+5',
-      status: 'En cours',
       missions: [
         'Formation d\'expert en développement couvrant la conception intégrale d\'applications web (Front & Back) et l\'architecture logicielle.',
         'Apprentissage approfondi des frameworks modernes, de l\'intégration continue (DevOps) et du pilotage de projets techniques en équipe.'
@@ -120,14 +119,9 @@ export function Formation() {
                       >
                         {/* Badge niveau + status */}
                         <div className="mb-3 flex gap-2 flex-wrap">
-                      <span className="px-3 py-1 bg-[#6366f1]/20 text-[#6366f1] rounded-full text-xs font-semibold">
-                        {formation.level}
-                      </span>
-                          {formation.status && (
-                              <span className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-semibold">
-                          {formation.status}
-                        </span>
-                          )}
+                          <span className="px-3 py-1 bg-[#6366f1]/20 text-[#6366f1] rounded-full text-xs font-semibold">
+                            {formation.level}
+                          </span>
                         </div>
 
                         {/* Titre */}

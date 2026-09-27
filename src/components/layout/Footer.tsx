@@ -34,7 +34,7 @@ export function Footer() {
               Luca Chaboissier
             </button>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Développeur Web
+              Développeur Backend PHP / Symfony
             </p>
           </div>
 

@@ -32,9 +32,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-6 inline-block"
         >
-          <span className="px-6 py-2 bg-linear-to-r from-amber-400 to-orange-500 text-white rounded-full text-sm font-medium shadow-lg shadow-amber-500/30">
-            🚀 À la recherche d'un poste de Développeur à partir d'Octobre 2026 !
-          </span>
+        <span className="px-6 py-2 bg-linear-to-r from-[#6366f1] to-pink-600 text-white rounded-full text-sm font-medium shadow-lg shadow-[#6366f1]/40">
+          🚀 Disponible immédiatement pour un poste de Développeur !
+        </span>
         </motion.div>
 
         <motion.h1
@@ -52,7 +52,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6"
         >
-          Alternant Développeur Web
+          Développeur Backend PHP / Symfony
         </motion.h2>
 
         <motion.p
@@ -61,7 +61,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Développeur Web en alternance, je réalise des applications web fonctionnelles et adaptées aux besoins.
+          Développeur Backend, je réalise des applications web fonctionnelles et adaptées aux besoins.
           Spécialisé en <span className="text-[#6366f1] font-semibold">PHP/Symfony</span>,
           j'utilise également des technologies comme <span className="text-[#6366f1] font-semibold">Angular</span>,{' '}
           <span className="text-[#6366f1] font-semibold">Docker</span> ou{' '}
