@@ -2,11 +2,88 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luca CHABOISSIER — Portfolio</title>
+    <title>Luca Chaboissier — Développeur Backend PHP / Symfony</title>
+    <meta
+      name="description"
+      content="Portfolio de Luca Chaboissier, développeur backend PHP / Symfony, 2 ans d'alternance chez APRIL Marine en Mastère (Bac+5). Disponible immédiatement, Nantes / Vendée."
+    />
+    <meta name="author" content="Luca Chaboissier" />
+    <link rel="canonical" href="https://lchbssr.github.io/" />
+
+    <!-- Icônes -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0f0f14" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f9fafb" media="(prefers-color-scheme: light)" />
+
+    <!-- Open Graph (aperçu LinkedIn, Slack, Discord…) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Luca Chaboissier" />
+    <meta property="og:url" content="https://lchbssr.github.io/" />
+    <meta property="og:title" content="Luca Chaboissier — Développeur Backend PHP / Symfony" />
+    <meta
+      property="og:description"
+      content="Développeur backend Symfony, 2 ans d'alternance sur des APIs métier. Disponible immédiatement pour un CDI."
+    />
+    <meta property="og:image" content="https://lchbssr.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Luca Chaboissier, Développeur Backend PHP / Symfony" />
+    <meta property="profile:first_name" content="Luca" />
+    <meta property="profile:last_name" content="Chaboissier" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Luca Chaboissier — Développeur Backend PHP / Symfony" />
+    <meta
+      name="twitter:description"
+      content="Développeur backend Symfony, 2 ans d'alternance sur des APIs métier. Disponible immédiatement pour un CDI."
+    />
+    <meta name="twitter:image" content="https://lchbssr.github.io/og-image.png" />
+
+    <!-- Données structurées (Google) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Luca Chaboissier",
+        "jobTitle": "Développeur Backend PHP / Symfony",
+        "url": "https://lchbssr.github.io/",
+        "image": "https://lchbssr.github.io/assets/profile.webp",
+        "address": { "@type": "PostalAddress", "addressLocality": "Nantes", "addressCountry": "FR" },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Nantes Ynov Campus" },
+          { "@type": "CollegeOrUniversity", "name": "Université de Bretagne Occidentale" }
+        ],
+        "knowsAbout": ["PHP", "Symfony", "API Platform", "PostgreSQL", "MySQL", "Docker", "RabbitMQ"],
+        "sameAs": ["https://github.com/lchbssr", "https://www.linkedin.com/in/luca-chaboissier/"]
+      }
+    </script>
+
+    <!-- Applique le thème avant le premier rendu pour éviter le flash clair/sombre -->
+    <script>
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.classList.add(theme);
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
   </head>
   <body>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif">
+        Luca Chaboissier — Développeur Backend PHP / Symfony.
+        Ce portfolio nécessite JavaScript. Contact : lucachaboissier@outlook.fr
+      </p>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

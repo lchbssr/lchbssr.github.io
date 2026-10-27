@@ -9,22 +9,31 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Le thème initial est déjà appliqué sur <html> par le script inline de index.html
+// (choix sauvegardé, sinon préférence système), on le relit pour rester synchronisé.
+function getInitialTheme(): Theme {
+    return document.documentElement.classList.contains('light') ? 'light' : 'dark';
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [theme, setTheme] = useState<Theme>(() => {
-        const savedTheme = localStorage.getItem('theme') as Theme | null;
-        return savedTheme || 'dark';
-    });
+    const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
     useEffect(() => {
         const root = document.documentElement;
         root.classList.remove('light', 'dark');
         root.classList.add(theme);
-
-        localStorage.setItem('theme', theme);
+        root.style.colorScheme = theme;
     }, [theme]);
 
     const toggleTheme = () => {
-        setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+        const next: Theme = theme === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        // On ne mémorise que les choix explicites, pour suivre le système sinon
+        try {
+            localStorage.setItem('theme', next);
+        } catch {
+            // Stockage indisponible (navigation privée…) : le thème reste valable pour la session
+        }
     };
 
     return (
@@ -34,6 +43,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTheme() {
     const context = useContext(ThemeContext);
     if (context === undefined) {
