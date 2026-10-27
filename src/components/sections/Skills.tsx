@@ -14,13 +14,15 @@ export function Skills() {
             <SkillLevel title="Maîtrise" description="Mon socle technique, utilisé en entreprise pendant mon alternance et mes stages.">
               <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
                 {masteredSkills.map((skill) => (
-                    <li
+                    <motion.li
                         key={skill.name}
-                        className="bg-white dark:bg-night-card border border-gray-200 dark:border-white/5 rounded-xl p-4 shadow-sm dark:shadow-none flex flex-col items-center justify-center gap-3 aspect-square"
+                        className="bg-white dark:bg-night-card border border-gray-200 dark:border-white/5 hover:border-accent/30 transition-colors rounded-xl p-4 shadow-sm dark:shadow-none flex flex-col items-center justify-center gap-3 aspect-square"
+                        whileHover={{ y: -4, scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
                     >
                       <SkillLogo skill={skill} className="w-12 h-12" />
                       <span className="text-gray-900 dark:text-white font-semibold text-sm text-center">{skill.name}</span>
-                    </li>
+                    </motion.li>
                 ))}
               </ul>
             </SkillLevel>
@@ -28,13 +30,15 @@ export function Skills() {
             <SkillLevel title="Pratique" description="Technologies que j'ai utilisées en entreprise ou en projet.">
               <ul className="flex flex-wrap gap-3">
                 {practicedSkills.map((skill) => (
-                    <li
+                    <motion.li
                         key={skill.name}
-                        className="flex items-center gap-2 bg-white dark:bg-night-card border border-gray-200 dark:border-white/5 rounded-lg px-3 py-2"
+                        className="flex items-center gap-2 bg-white dark:bg-night-card border border-gray-200 dark:border-white/5 hover:border-accent/30 transition-colors rounded-lg px-3 py-2"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
                     >
                       <SkillLogo skill={skill} className="w-5 h-5" />
                       <span className="text-gray-800 dark:text-gray-200 text-sm font-medium">{skill.name}</span>
-                    </li>
+                    </motion.li>
                 ))}
               </ul>
             </SkillLevel>
@@ -42,12 +46,14 @@ export function Skills() {
             <SkillLevel title="Notions" description="Découvertes en formation ou en projet.">
               <ul className="flex flex-wrap gap-2">
                 {notionSkills.map((name) => (
-                    <li
+                    <motion.li
                         key={name}
-                        className="px-3 py-1.5 rounded-md text-sm text-gray-600 dark:text-gray-400 bg-gray-200/60 dark:bg-white/5"
+                        className="px-3 py-1.5 rounded-md text-sm text-gray-600 dark:text-gray-400 bg-gray-200/60 dark:bg-white/5 border border-transparent hover:border-accent/30 transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
                     >
                       {name}
-                    </li>
+                    </motion.li>
                 ))}
               </ul>
             </SkillLevel>
@@ -55,9 +61,11 @@ export function Skills() {
             <SkillLevel title="Savoir-être" description="Ce qui guide ma façon de travailler en équipe.">
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {softSkills.map(({ name, icon: Icon, description }) => (
-                    <li
+                    <motion.li
                         key={name}
-                        className="bg-white dark:bg-night-card border border-gray-200 dark:border-white/5 rounded-xl p-5 shadow-sm dark:shadow-none flex items-start gap-4"
+                        className="bg-white dark:bg-night-card border border-gray-200 dark:border-white/5 hover:border-accent/30 transition-colors rounded-xl p-5 shadow-sm dark:shadow-none flex items-start gap-4"
+                        whileHover={{ y: -4 }}
+                        transition={{ duration: 0.2 }}
                     >
                       <div className="shrink-0 w-11 h-11 bg-accent/10 rounded-lg flex items-center justify-center">
                         <Icon className="w-5 h-5 text-accent" aria-hidden="true" />
@@ -66,7 +74,7 @@ export function Skills() {
                         <h4 className="font-bold text-gray-900 dark:text-white mb-1">{name}</h4>
                         <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
                       </div>
-                    </li>
+                    </motion.li>
                 ))}
               </ul>
             </SkillLevel>

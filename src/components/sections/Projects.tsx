@@ -136,12 +136,14 @@ export function Projects() {
 
                     <ul className="flex flex-wrap gap-2 mb-6" aria-label="Technologies">
                       {project.technologies.map((tech) => (
-                          <li
+                          <motion.li
                               key={tech}
                               className="px-3 py-1 bg-accent/10 text-accent rounded-md text-xs font-medium border border-accent/20"
+                              whileHover={{ scale: 1.05, backgroundColor: 'rgba(99, 102, 241, 0.2)' }}
+                              transition={{ duration: 0.2 }}
                           >
                             {tech}
-                          </li>
+                          </motion.li>
                       ))}
                     </ul>
 

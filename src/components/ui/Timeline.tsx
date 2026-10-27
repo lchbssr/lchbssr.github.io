@@ -83,9 +83,14 @@ function TimelineEntry({ item, side, dotBorderClassName }: TimelineEntryProps) {
 
                     <ul className="flex flex-wrap gap-2" aria-label="Technologies">
                         {item.technologies.map((tech) => (
-                            <li key={tech} className="px-3 py-1 bg-accent/20 text-accent rounded-md text-xs font-medium">
+                            <motion.li
+                                key={tech}
+                                className="px-3 py-1 bg-accent/20 text-accent rounded-md text-xs font-medium"
+                                whileHover={{ scale: 1.05, backgroundColor: 'rgba(99, 102, 241, 0.3)' }}
+                                transition={{ duration: 0.2 }}
+                            >
                                 {tech}
-                            </li>
+                            </motion.li>
                         ))}
                     </ul>
                 </motion.article>
