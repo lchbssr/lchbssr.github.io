@@ -1,6 +1,8 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import type { TimelineItem } from '../../data/types';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { formatPeriod } from '../../lib/date';
 
 interface TimelineProps {
     items: TimelineItem[];
@@ -16,7 +18,7 @@ export function Timeline({ items, dotBorderClassName }: TimelineProps) {
             <ol className="space-y-12">
                 {items.map((item, index) => (
                     <TimelineEntry
-                        key={`${item.organization}-${item.period}`}
+                        key={`${item.organization}-${item.start}`}
                         item={item}
                         side={index % 2 === 0 ? 'left' : 'right'}
                         dotBorderClassName={dotBorderClassName}
@@ -34,6 +36,7 @@ interface TimelineEntryProps {
 }
 
 function TimelineEntry({ item, side, dotBorderClassName }: TimelineEntryProps) {
+    const { language, t } = useLanguage();
     // Chaque entrée s'anime quand elle entre dans l'écran, et non toutes en même temps
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -55,13 +58,13 @@ function TimelineEntry({ item, side, dotBorderClassName }: TimelineEntryProps) {
                     {item.badge && (
                         <div className="mb-3">
                             <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-xs font-semibold">
-                                {item.badge}
+                                {item.badge[language]}
                             </span>
                         </div>
                     )}
 
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                        {item.title}
+                        {item.title[language]}
                     </h3>
 
                     <div className="mb-4">
@@ -69,19 +72,19 @@ function TimelineEntry({ item, side, dotBorderClassName }: TimelineEntryProps) {
                             {item.organization}
                         </p>
                         <p className="text-gray-600 dark:text-gray-400 text-xs">
-                            {item.period} | {item.location}
+                            {formatPeriod(item.start, item.end, language)} | {item.location}
                         </p>
                     </div>
 
                     <ul className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                        {item.missions.map((mission) => (
+                        {item.missions[language].map((mission) => (
                             <li key={mission} className="mb-1">
                                 <span className="text-accent font-medium" aria-hidden="true">•</span> {mission}
                             </li>
                         ))}
                     </ul>
 
-                    <ul className="flex flex-wrap gap-2" aria-label="Technologies">
+                    <ul className="flex flex-wrap gap-2" aria-label={t.projects.technologies}>
                         {item.technologies.map((tech) => (
                             <motion.li
                                 key={tech}

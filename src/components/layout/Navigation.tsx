@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTheme } from '../../contexts/ThemeContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { scrollBehavior } from '../../lib/scroll';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,12 +21,12 @@ export function Navigation() {
   }, []);
 
   const navItems = [
-    { name: 'À Propos', href: '#about' },
-    { name: 'Expérience', href: '#experience' },
-    { name: 'Projets', href: '#projects' },
-    { name: 'Compétences', href: '#skills' },
-    { name: 'Formation', href: '#education' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.experience, href: '#experience' },
+    { name: t.nav.projects, href: '#projects' },
+    { name: t.nav.skills, href: '#skills' },
+    { name: t.nav.education, href: '#education' },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -46,7 +48,7 @@ export function Navigation() {
 
   return (
     <motion.nav
-      aria-label="Navigation principale"
+      aria-label={t.nav.label}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -64,7 +66,7 @@ export function Navigation() {
             className="block cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            aria-label="Luca Chaboissier, retour en haut de la page"
+            aria-label={t.nav.home}
           >
             <svg viewBox="0 0 64 64" className="w-9 h-9 rounded-full dark:ring-1 dark:ring-white/20" aria-hidden="true">
               <circle cx="32" cy="32" r="32" fill="#000" />
@@ -84,31 +86,35 @@ export function Navigation() {
               </a>
             ))}
 
-            <motion.button
-              onClick={toggleTheme}
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-2 rounded-full bg-gray-200 dark:bg-night-raised text-gray-900 dark:text-gray-400 hover:text-accent transition-colors duration-200"
-              aria-label={theme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre'}
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </motion.button>
+            <div className="flex items-center gap-3">
+              <LanguageToggle />
+              <motion.button
+                onClick={toggleTheme}
+                whileHover={{ scale: 1.1, rotate: 180 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 rounded-full bg-gray-200 dark:bg-night-raised text-gray-900 dark:text-gray-400 hover:text-accent transition-colors duration-200"
+                aria-label={theme === 'dark' ? t.nav.lightMode : t.nav.darkMode}
+              >
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              </motion.button>
+            </div>
           </div>
 
           <div className="md:hidden flex items-center gap-3">
+            <LanguageToggle />
             <motion.button
                 onClick={toggleTheme}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="p-2 rounded-full bg-gray-200 dark:bg-night-raised text-gray-900 dark:text-gray-400 transition-colors duration-200"
-                aria-label={theme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre'}
+                aria-label={theme === 'dark' ? t.nav.lightMode : t.nav.darkMode}
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
             <button
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+                aria-label={isMobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
             >
@@ -144,5 +150,22 @@ export function Navigation() {
         )}
       </AnimatePresence>
     </motion.nav>
+  );
+}
+
+function LanguageToggle() {
+  const { language, toggleLanguage, t } = useLanguage();
+
+  return (
+    <motion.button
+      onClick={toggleLanguage}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className="w-9 h-9 rounded-full bg-gray-200 dark:bg-night-raised text-gray-900 dark:text-gray-400 hover:text-accent transition-colors duration-200 text-xs font-bold"
+      aria-label={t.nav.switchLanguage}
+      lang={language === 'fr' ? 'en' : 'fr'}
+    >
+      {t.nav.otherLanguage}
+    </motion.button>
   );
 }

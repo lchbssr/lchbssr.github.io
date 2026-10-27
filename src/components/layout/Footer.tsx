@@ -3,8 +3,10 @@ import { ArrowUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { scrollBehavior } from '../../lib/scroll';
 import { socialLinks } from '../../data/socials';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -36,7 +38,7 @@ export function Footer() {
               Luca Chaboissier
             </button>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Développeur Backend PHP / Symfony
+              {t.hero.role}
             </p>
           </div>
 
@@ -60,7 +62,7 @@ export function Footer() {
 
         <div className="pt-6 border-t border-gray-200 dark:border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
           <p className="text-gray-600 dark:text-gray-400 text-center sm:text-left">
-            © {currentYear} Luca Chaboissier. Tous droits réservés.
+            © {currentYear} Luca Chaboissier. {t.footer.rights}
           </p>
         </div>
       </div>
@@ -76,7 +78,7 @@ export function Footer() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8, y: 20 }}
                 transition={{ duration: 0.1 }}
-                aria-label="Revenir en haut de la page"
+                aria-label={t.footer.backToTop}
             >
               <ArrowUp size={20} />
             </motion.button>

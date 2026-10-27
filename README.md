@@ -22,6 +22,7 @@ Portfolio personnel présentant mon parcours (2 ans d'alternance chez APRIL Mari
 
 ## Fonctionnalités
 
+- Version française et anglaise : bouton FR / EN, choix mémorisé, et lien direct vers l'anglais avec `?lang=en`
 - Thème clair / sombre, qui suit la préférence système et mémorise le choix de l'utilisateur, sans flash au chargement
 - Frises chronologiques des expériences et formations
 - Galerie d'images des projets, navigable au clavier (← → Échap)
@@ -30,7 +31,7 @@ Portfolio personnel présentant mon parcours (2 ans d'alternance chez APRIL Mari
 - Accessible : animations réduites si le système le demande, galerie en `dialog` avec gestion du focus, libellés ARIA en français
 - Aucune ressource externe chargée : logos et images sont servis par le site lui-même
 
-Pour modifier le contenu (expériences, formations, compétences), il suffit d'éditer les fichiers de `src/data/`.
+Pour modifier le contenu (expériences, formations, projets, compétences), il suffit d'éditer les fichiers de `src/data/`, où chaque texte existe en français et en anglais. Les textes de l'interface (menu, boutons, titres) sont dans `src/i18n/ui.ts`.
 
 ## Structure
 
@@ -40,8 +41,9 @@ src/
 │   ├── layout/      # Navigation, Footer
 │   ├── sections/    # Hero, About, Experience, Formation, Skills, Projects, Contact
 │   └── ui/          # Composants réutilisables (SectionHeading, Timeline, ImageGallery)
-├── contexts/        # ThemeContext (clair / sombre)
-├── data/            # Contenu : expériences, formations, compétences
+├── contexts/        # ThemeContext (clair / sombre), LanguageContext (FR / EN)
+├── data/            # Contenu en FR / EN : expériences, formations, projets, compétences
+├── i18n/            # Textes de l'interface en FR / EN
 ├── lib/             # Utilitaires
 ├── App.tsx
 └── main.tsx

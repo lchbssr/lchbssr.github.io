@@ -4,8 +4,11 @@ import { useRef, useState } from 'react';
 import {ExternalLink, Github, ImageIcon} from 'lucide-react';
 import { ImageGallery } from "../../components/ui/ImageGallery";
 import { SectionHeading } from "../ui/SectionHeading";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { projects } from "../../data/projects";
 
 export function Projects() {
+  const { language, t } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -19,83 +22,10 @@ export function Projects() {
     setGalleryOpen(true);
   };
 
-  const projects = [
-    {
-      title: 'Booking API',
-      description: 'API REST de réservation d\'espaces partagés : authentification JWT, règles métier, créneaux disponibles, anti-chevauchement garanti par PostgreSQL et e-mails asynchrones.',
-      type: 'API Backend',
-      image: './projects/booking-api.webp',
-      technologies: ['PHP', 'Symfony', 'API Platform', 'PostgreSQL', 'Docker', 'PHPUnit'],
-      liveUrl: null,
-      codeUrl: 'https://github.com/lchbssr/booking-api',
-      galleryImages: [
-        './projects/booking-api/endpoints.webp',
-        './projects/booking-api/connexion-jwt.webp',
-        './projects/booking-api/disponibilites.webp',
-        './projects/booking-api/reservation-acceptee.webp',
-        './projects/booking-api/reservation-refusee.webp',
-        './projects/booking-api/email-confirmation.webp',
-        './projects/booking-api/tests.webp',
-      ],
-    },
-    {
-      title: 'Smartexpo',
-      description: 'Exposition des modèles de smartphones. Projet académique L3 CDA.',
-      type: 'Application Web',
-      image: './projects/smartexpo.webp',
-      technologies: ['HTML', 'CSS', 'PHP', 'CodeIgniter', 'Bootstrap', 'SQL'],
-      liveUrl: 'https://dev-data.alwaysdata.net/',
-      codeUrl: 'https://github.com/lchbssr/smartexpo',
-    },
-    {
-      title: 'Keywatch',
-      description: 'Application web basée sur un jeu de frappe consistant à écrire un texte le plus vite possible. Projet académique LP AMIO.',
-      type: 'Application Web',
-      image: './projects/keywatch.webp',
-      technologies: ['HTML', 'SCSS', 'TypeScript', 'Angular'],
-      liveUrl: 'https://lchbssr.github.io/keywatch',
-      codeUrl: 'https://github.com/lchbssr/keywatch',
-    },
-    {
-      title: 'Pixel',
-      description: 'Site Web regroupant l\'ensemble des jeux-vidéos. Projet académique LP AMIO.',
-      type: 'Application Web',
-      image: './projects/pixel.webp',
-      technologies: ['HTML', 'CSS', 'PHP', 'Symfony', 'SQL', 'Docker'],
-      liveUrl: null,
-      codeUrl: 'https://github.com/lchbssr/pixel',
-      galleryImages: [
-        './projects/pixel/accueil.webp',
-        './projects/pixel/accueil-connecte.webp',
-        './projects/pixel/inscription.webp',
-        './projects/pixel/connexion.webp',
-        './projects/pixel/liste-jeux.webp',
-        './projects/pixel/liste-editeurs.webp',
-        './projects/pixel/liste-supports.webp',
-      ],
-    },
-    {
-      title: 'Foodeat',
-      description: 'Application mobile regroupant la liste des recettes de cuisine à l\'aide d\'une API. Projet académique LP AMIO.',
-      type: 'Application Mobile',
-      image: './projects/foodeat.webp',
-      technologies: ['Swift', 'API'],
-      liveUrl: null,
-      codeUrl: 'https://github.com/lchbssr/foodeat',
-      galleryImages: [
-        './projects/foodeat/accueil.webp',
-        './projects/foodeat/detail.webp',
-        './projects/foodeat/liste-plats.webp',
-        './projects/foodeat/relance-choix-plat.webp',
-        './projects/foodeat/relance-choix-plat-2.webp',
-      ],
-    },
-  ];
-
   return (
     <section id="projects" className="py-24 px-6 lg:px-12 bg-white dark:bg-night">
       <div className="max-w-7xl mx-auto">
-        <SectionHeading title="Projets" className="mb-20" />
+        <SectionHeading title={t.projects.title} className="mb-20" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8" ref={ref}>
           {projects.map((project, index) => (
@@ -123,7 +53,7 @@ export function Projects() {
 
                   <div className="p-6 flex flex-col flex-grow border-t border-gray-200 dark:border-white/5 group-hover:border-accent/30 transition-colors duration-200">
                     <span className="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-xs font-semibold mb-4 w-fit">
-                    {project.type}
+                    {project.type[language]}
                   </span>
 
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
@@ -131,10 +61,10 @@ export function Projects() {
                     </h3>
 
                     <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
-                      {project.description}
+                      {project.description[language]}
                     </p>
 
-                    <ul className="flex flex-wrap gap-2 mb-6" aria-label="Technologies">
+                    <ul className="flex flex-wrap gap-2 mb-6" aria-label={t.projects.technologies}>
                       {project.technologies.map((tech) => (
                           <motion.li
                               key={tech}
@@ -159,7 +89,7 @@ export function Projects() {
                               transition={{ duration: 0.15 }}
                           >
                             <ExternalLink size={16} />
-                            Voir le site
+                            {t.projects.live}
                           </motion.a>
                       ) : project.galleryImages && project.galleryImages.length > 0 ? (
                           <motion.button
@@ -172,16 +102,16 @@ export function Projects() {
                               transition={{ duration: 0.15 }}
                           >
                             <ImageIcon size={16} />
-                            Voir les images
+                            {t.projects.gallery}
                           </motion.button>
                       ) : (
                           <div className="flex-1 relative group/tooltip">
                             <div className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-700/50 text-gray-200 rounded-lg text-sm font-medium cursor-not-allowed">
                               <ExternalLink size={16} />
-                              Indisponible
+                              {t.projects.unavailable}
                             </div>
                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-accent text-white text-xs font-medium rounded-lg opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-lg">
-                              Le site arrive prochainement !
+                              {t.projects.comingSoon}
                               <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-accent"></div>
                             </div>
                           </div>
@@ -196,7 +126,7 @@ export function Projects() {
                           transition={{ duration: 0.15 }}
                       >
                         <Github size={16} />
-                        Code source
+                        {t.projects.code}
                       </motion.a>
                     </div>
                   </div>

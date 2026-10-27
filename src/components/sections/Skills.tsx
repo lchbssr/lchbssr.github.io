@@ -3,15 +3,18 @@ import { useRef, type ReactNode } from 'react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { masteredSkills, practicedSkills, notionSkills, softSkills } from '../../data/skills';
 import type { Skill } from '../../data/types';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Skills() {
+  const { language, t } = useLanguage();
+
   return (
       <section id="skills" className="py-24 px-6 lg:px-12 bg-gray-50 dark:bg-night-alt">
         <div className="max-w-6xl mx-auto">
-          <SectionHeading title="Compétences" />
+          <SectionHeading title={t.skills.title} />
 
           <div className="space-y-12">
-            <SkillLevel title="Maîtrise" description="Mon socle technique, utilisé en entreprise pendant mon alternance et mes stages.">
+            <SkillLevel {...t.skills.mastered}>
               <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
                 {masteredSkills.map((skill) => (
                     <motion.li
@@ -27,7 +30,7 @@ export function Skills() {
               </ul>
             </SkillLevel>
 
-            <SkillLevel title="Pratique" description="Technologies que j'ai utilisées en entreprise ou en projet.">
+            <SkillLevel {...t.skills.practiced}>
               <ul className="flex flex-wrap gap-3">
                 {practicedSkills.map((skill) => (
                     <motion.li
@@ -43,7 +46,7 @@ export function Skills() {
               </ul>
             </SkillLevel>
 
-            <SkillLevel title="Notions" description="Découvertes en formation ou en projet.">
+            <SkillLevel {...t.skills.notions}>
               <ul className="flex flex-wrap gap-2">
                 {notionSkills.map((name) => (
                     <motion.li
@@ -58,11 +61,11 @@ export function Skills() {
               </ul>
             </SkillLevel>
 
-            <SkillLevel title="Savoir-être" description="Ce qui guide ma façon de travailler en équipe.">
+            <SkillLevel {...t.skills.soft}>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {softSkills.map(({ name, icon: Icon, description }) => (
                     <motion.li
-                        key={name}
+                        key={name.fr}
                         className="bg-white dark:bg-night-card border border-gray-200 dark:border-white/5 hover:border-accent/30 transition-colors rounded-xl p-5 shadow-sm dark:shadow-none flex items-start gap-4"
                         whileHover={{ y: -4 }}
                         transition={{ duration: 0.2 }}
@@ -71,8 +74,8 @@ export function Skills() {
                         <Icon className="w-5 h-5 text-accent" aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900 dark:text-white mb-1">{name}</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+                        <h4 className="font-bold text-gray-900 dark:text-white mb-1">{name[language]}</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">{description[language]}</p>
                       </div>
                     </motion.li>
                 ))}

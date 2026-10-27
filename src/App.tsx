@@ -9,28 +9,31 @@ import { Skills } from "./components/sections/Skills";
 import { Projects } from "./components/sections/Projects";
 import { Contact } from "./components/sections/Contact";
 import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
   return (
       <ThemeProvider>
-          {/* Désactive les animations de mouvement si l'utilisateur l'a demandé à son système */}
-          <MotionConfig reducedMotion="user">
-              <div className="min-h-screen bg-gray-50 dark:bg-night-alt text-gray-900 dark:text-white transition-colors duration-300">
-                  <Navigation />
+          <LanguageProvider>
+              {/* Désactive les animations de mouvement si l'utilisateur l'a demandé à son système */}
+              <MotionConfig reducedMotion="user">
+                  <div className="min-h-screen bg-gray-50 dark:bg-night-alt text-gray-900 dark:text-white transition-colors duration-300">
+                      <Navigation />
 
-                  <main>
-                      <Hero />
-                      <About />
-                      <Experience />
-                      <Projects />
-                      <Skills />
-                      <Formation />
-                      <Contact />
-                  </main>
+                      <main>
+                          <Hero />
+                          <About />
+                          <Experience />
+                          <Projects />
+                          <Skills />
+                          <Formation />
+                          <Contact />
+                      </main>
 
-                  <Footer />
-              </div>
-          </MotionConfig>
+                      <Footer />
+                  </div>
+              </MotionConfig>
+          </LanguageProvider>
       </ThemeProvider>
   );
 }

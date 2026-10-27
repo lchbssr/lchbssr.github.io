@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useCallback, useRef, useId } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const FOCUSABLE = 'button, [href], [tabindex]:not([tabindex="-1"])';
 // Distance (px) ou vitesse (px/s) de glissement à partir de laquelle on change d'image
@@ -15,6 +16,7 @@ interface ImageGalleryProps {
 }
 
 export function ImageGallery({ images, isOpen, onClose, projectTitle }: ImageGalleryProps) {
+    const { t } = useLanguage();
     const [currentIndex, setCurrentIndex] = useState(0);
     const [wasOpen, setWasOpen] = useState(isOpen);
     const panelRef = useRef<HTMLDivElement>(null);
@@ -130,7 +132,7 @@ export function ImageGallery({ images, isOpen, onClose, projectTitle }: ImageGal
                                 whileHover={{ scale: 1.1, rotate: 90 }}
                                 whileTap={{ scale: 0.9 }}
                                 className="w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-                                aria-label="Fermer la galerie"
+                                aria-label={t.gallery.close}
                             >
                                 <X className="text-white" size={24} />
                             </motion.button>
@@ -165,7 +167,7 @@ export function ImageGallery({ images, isOpen, onClose, projectTitle }: ImageGal
                                         whileHover={{ scale: 1.1, x: -5 }}
                                         whileTap={{ scale: 0.9 }}
                                         className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full transition-colors"
-                                        aria-label="Image précédente"
+                                        aria-label={t.gallery.previous}
                                     >
                                         <ChevronLeft className="text-white" size={28} />
                                     </motion.button>
@@ -175,7 +177,7 @@ export function ImageGallery({ images, isOpen, onClose, projectTitle }: ImageGal
                                         whileHover={{ scale: 1.1, x: 5 }}
                                         whileTap={{ scale: 0.9 }}
                                         className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full transition-colors"
-                                        aria-label="Image suivante"
+                                        aria-label={t.gallery.next}
                                     >
                                         <ChevronRight className="text-white" size={28} />
                                     </motion.button>
@@ -191,7 +193,7 @@ export function ImageGallery({ images, isOpen, onClose, projectTitle }: ImageGal
                                         onClick={() => setCurrentIndex(index)}
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        aria-label={`Afficher l'image ${index + 1}`}
+                                        aria-label={t.gallery.showImage(index + 1)}
                                         aria-current={index === currentIndex ? 'true' : undefined}
                                         className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
                                             index === currentIndex
@@ -214,13 +216,13 @@ export function ImageGallery({ images, isOpen, onClose, projectTitle }: ImageGal
                         )}
 
                         <div className="hidden md:flex justify-center gap-4 mt-4 text-gray-400 text-xs">
-                            <span>← → Navigation</span>
+                            <span>{t.gallery.keyboardNavigation}</span>
                             <span>•</span>
-                            <span>Échap : Fermer</span>
+                            <span>{t.gallery.keyboardClose}</span>
                         </div>
                         {images.length > 1 && (
                             <p className="md:hidden text-center mt-4 text-gray-400 text-xs">
-                                Faites glisser l'image pour naviguer
+                                {t.gallery.swipe}
                             </p>
                         )}
                     </motion.div>

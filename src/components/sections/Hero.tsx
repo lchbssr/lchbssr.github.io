@@ -1,7 +1,11 @@
 import { motion } from 'motion/react';
 import { Download, Mail, FileText, MapPin, Car } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { highlight } from '../../lib/highlight';
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="hero"
@@ -18,7 +22,7 @@ export function Hero() {
             <div className="w-full h-full rounded-full bg-gray-100 dark:bg-night-raised flex items-center justify-center overflow-hidden">
               <img
                   src="/assets/profile.webp"
-                  alt="Photo de profil de Luca Chaboissier"
+                  alt={t.hero.photoAlt}
                   width={192}
                   height={192}
                   fetchPriority="high"
@@ -36,7 +40,7 @@ export function Hero() {
         >
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium border bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/20">
           <span className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
-          Disponible immédiatement
+          {t.hero.available}
         </span>
         </motion.div>
 
@@ -55,7 +59,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-4"
         >
-          Développeur Backend PHP / Symfony
+          {t.hero.role}
         </motion.h2>
 
         <motion.div
@@ -70,7 +74,7 @@ export function Hero() {
           </span>
           <span className="flex items-center gap-1.5">
             <Car size={16} className="text-accent" />
-            Permis B (véhiculé)
+            {t.hero.drivingLicence}
           </span>
         </motion.div>
 
@@ -80,13 +84,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Développeur backend, je conçois et fais évoluer des APIs métier fiables et maintenables.
-          Spécialisé en <span className="text-accent font-semibold">PHP/Symfony</span> et{' '}
-          <span className="text-accent font-semibold">API Platform</span>, je m'appuie sur{' '}
-          <span className="text-accent font-semibold">PostgreSQL</span>,{' '}
-          <span className="text-accent font-semibold">Docker</span> et{' '}
-          <span className="text-accent font-semibold">RabbitMQ</span>, avec une vraie appétence pour la qualité
-          du code et la réduction de la dette technique.
+          {highlight(t.hero.intro)}
         </motion.p>
 
         <motion.div
@@ -102,7 +100,7 @@ export function Hero() {
             className="px-8 py-3 bg-accent hover:bg-accent-hover text-white rounded-full font-medium transition-colors duration-200 flex items-center gap-2 cursor-pointer"
           >
             <FileText size={20} />
-            Voir mon parcours
+            {t.hero.background}
           </motion.a>
 
           <motion.a
@@ -112,7 +110,7 @@ export function Hero() {
             className="px-8 py-3 border-2 border-gray-300 dark:border-white/20 hover:border-gray-400 dark:hover:border-white/40 text-gray-900 dark:text-white rounded-full font-medium transition-colors duration-200 flex items-center gap-2 cursor-pointer"
           >
             <Mail size={20} />
-            Me contacter
+            {t.hero.contact}
           </motion.a>
 
           <motion.a
@@ -123,7 +121,7 @@ export function Hero() {
               className="px-8 py-3 border-2 border-gray-300 dark:border-white/20 hover:border-gray-400 dark:hover:border-white/40 text-gray-900 dark:text-white rounded-full font-medium transition-colors duration-200 flex items-center gap-2"
           >
             <Download size={20} />
-            Télécharger mon CV
+            {t.hero.cv}
           </motion.a>
         </motion.div>
       </div>

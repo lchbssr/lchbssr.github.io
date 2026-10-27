@@ -1,5 +1,5 @@
 import { Lightbulb, Target, Zap, CheckCircle2, FlaskConical, type LucideIcon } from 'lucide-react';
-import type { Skill } from './types';
+import type { Localized, Skill } from './types';
 
 const logo = (slug: string) => `/skills/${slug}.svg`;
 
@@ -45,30 +45,42 @@ export const notionSkills: string[] = [
 ];
 
 export interface SoftSkill {
-    name: string;
+    name: Localized;
     icon: LucideIcon;
-    description: string;
+    description: Localized;
 }
 
 export const softSkills: SoftSkill[] = [
     {
-        name: 'Curieux',
+        name: { fr: 'Curieux', en: 'Curious' },
         icon: Lightbulb,
-        description: 'Je teste régulièrement de nouveaux outils, que ce soit différents stacks en web, mobile, cloud ou IA.',
+        description: {
+            fr: 'Je teste régulièrement de nouveaux outils, que ce soit différents stacks en web, mobile, cloud ou IA.',
+            en: 'I regularly try out new tools, whether web, mobile, cloud or AI stacks.',
+        },
     },
     {
-        name: 'Autonome',
+        name: { fr: 'Autonome', en: 'Independent' },
         icon: Target,
-        description: 'J\'avance seul sur mes sujets, et je demande de l\'aide quand il faut.',
+        description: {
+            fr: 'J\'avance seul sur mes sujets, et je demande de l\'aide quand il faut.',
+            en: 'I move my tasks forward on my own, and ask for help when needed.',
+        },
     },
     {
-        name: 'Adaptable',
+        name: { fr: 'Adaptable', en: 'Adaptable' },
         icon: Zap,
-        description: 'Je m’ajuste rapidement aux changements et aux imprévus sans drama.',
+        description: {
+            fr: 'Je m’ajuste rapidement aux changements et aux imprévus sans drama.',
+            en: 'I adjust quickly to changes and the unexpected, without drama.',
+        },
     },
     {
-        name: 'Persévérant',
+        name: { fr: 'Persévérant', en: 'Persistent' },
         icon: CheckCircle2,
-        description: 'Je ne lâche pas un problème tant que je ne l\'ai pas compris, même si ça prend du temps.',
+        description: {
+            fr: 'Je ne lâche pas un problème tant que je ne l\'ai pas compris, même si ça prend du temps.',
+            en: 'I don\'t let go of a problem until I understand it, even if it takes time.',
+        },
     },
 ];

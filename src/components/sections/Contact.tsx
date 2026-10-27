@@ -4,8 +4,10 @@ import { useRef, useState } from 'react';
 import { Send, CheckCircle2 } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { socialLinks } from '../../data/socials';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Contact() {
+  const { t } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({
@@ -61,10 +63,9 @@ export function Contact() {
   return (
     <section id="contact" className="py-24 px-6 lg:px-12 bg-gray-50 dark:bg-night-alt">
       <div className="max-w-4xl mx-auto" ref={ref}>
-        <SectionHeading title="Contactez-moi">
+        <SectionHeading title={t.contact.title}>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6">
-            N'hésitez pas à me contacter.
-            Je reste ouvert aux nouvelles opportunités !
+            {t.contact.intro}
           </p>
         </SectionHeading>
 
@@ -110,8 +111,8 @@ export function Contact() {
               >
                 <CheckCircle2 className="text-green-500" size={64} />
               </motion.div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Message envoyé !</h3>
-              <p className="text-gray-600 dark:text-gray-400">Je vous répondrai dans les plus brefs délais.</p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t.contact.sentTitle}</h3>
+              <p className="text-gray-600 dark:text-gray-400">{t.contact.sentText}</p>
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -120,7 +121,7 @@ export function Contact() {
 
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
-                  Nom
+                  {t.contact.name}
                 </label>
                 <input
                   type="text"
@@ -130,13 +131,13 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-gray-50 dark:bg-night-alt border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent transition-colors"
-                  placeholder="Votre nom"
+                  placeholder={t.contact.namePlaceholder}
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
-                  Email
+                  {t.contact.email}
                 </label>
                 <input
                   type="email"
@@ -146,13 +147,13 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-gray-50 dark:bg-night-alt border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent transition-colors"
-                  placeholder="votre.email@example.com"
+                  placeholder={t.contact.emailPlaceholder}
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
-                  Message
+                  {t.contact.message}
                 </label>
                 <textarea
                   id="message"
@@ -162,7 +163,7 @@ export function Contact() {
                   required
                   rows={6}
                   className="w-full px-4 py-3 bg-gray-50 dark:bg-night-alt border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent transition-colors resize-none"
-                  placeholder="Votre message..."
+                  placeholder={t.contact.messagePlaceholder}
                 />
               </div>
 
@@ -174,12 +175,12 @@ export function Contact() {
                 className="w-full px-6 py-4 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={20} />
-                {isLoading ? 'Envoi en cours...' : 'Envoyer le message'}
+                {isLoading ? t.contact.sending : t.contact.send}
               </motion.button>
 
               {hasError && (
                 <p role="alert" className="text-sm text-center text-red-600 dark:text-red-400">
-                  L'envoi a échoué. Réessayez, ou écrivez-moi directement à{' '}
+                  {t.contact.error}{' '}
                   <a href="mailto:lucachaboissier@outlook.fr" className="underline hover:text-accent">
                     lucachaboissier@outlook.fr
                   </a>.
