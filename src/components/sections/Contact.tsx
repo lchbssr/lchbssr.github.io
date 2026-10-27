@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef, useState } from 'react';
-import { Mail, Linkedin, Github, Send, CheckCircle2 } from 'lucide-react';
+import { Send, CheckCircle2 } from 'lucide-react';
+import { SectionHeading } from '../ui/SectionHeading';
+import { socialLinks } from '../../data/socials';
 
 export function Contact() {
   const ref = useRef(null);
@@ -13,13 +15,15 @@ export function Contact() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    setHasError(false);
 
     try {
-      const form = new FormData(e.target as HTMLFormElement);
+      const form = new FormData(e.currentTarget);
       form.append("access_key", "d9258d38-6f1a-4eac-886c-d6110ef1037b");
 
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -28,7 +32,6 @@ export function Contact() {
       });
 
       const data = await response.json();
-      console.log('Web3Forms response:', data);
 
       if (data.success) {
         setIsSubmitted(true);
@@ -39,11 +42,11 @@ export function Contact() {
         }, 3000);
       } else {
         console.error('Erreur Web3Forms:', data);
-        alert('Erreur lors de l\'envoi. Veuillez réessayer.');
+        setHasError(true);
       }
     } catch (error) {
       console.error('Erreur:', error);
-      alert('Erreur lors de l\'envoi. Veuillez réessayer.');
+      setHasError(true);
     } finally {
       setIsLoading(false);
     }
@@ -56,36 +59,22 @@ export function Contact() {
     });
   };
   return (
-    <section id="contact" className="py-24 px-6 lg:px-12 bg-white dark:bg-[#0f0f14]">
+    <section id="contact" className="py-24 px-6 lg:px-12 bg-gray-50 dark:bg-night-alt">
       <div className="max-w-4xl mx-auto" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
-            Contactez-moi
-          </h2>
-          <div className="w-16 h-1 bg-[#6366f1] mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <SectionHeading title="Contactez-moi">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6">
             N'hésitez pas à me contacter.
             Je reste ouvert aux nouvelles opportunités !
           </p>
-        </motion.div>
+        </SectionHeading>
 
-        {/* Liens sociaux */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex justify-center gap-6 mb-12"
         >
-          {[
-            { icon: Mail, href: 'mailto:lucachaboissier@outlook.fr', label: 'Email' },
-            { icon: Linkedin, href: 'https://www.linkedin.com/in/luca-chaboissier/', label: 'LinkedIn' },
-            { icon: Github, href: 'https://github.com/lchbssr', label: 'GitHub' },
-          ].map((social) => (
+          {socialLinks.map((social) => (
             <motion.a
               key={social.label}
               href={social.href}
@@ -93,7 +82,7 @@ export function Contact() {
               rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               whileHover={{ y: -5, scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="w-14 h-14 bg-gray-100 dark:bg-[#1a1a1f] border border-gray-200 dark:border-white/5 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-[#6366f1] hover:border-[#6366f1]/30 duration-100"
+              className="w-14 h-14 bg-white dark:bg-night-raised border border-gray-200 dark:border-white/5 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-accent hover:border-accent/30 duration-100"
               aria-label={social.label}
             >
               <social.icon size={24} />
@@ -101,12 +90,11 @@ export function Contact() {
           ))}
         </motion.div>
 
-        {/* Formulaire */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="bg-gray-100 dark:bg-[#1a1a1f] border border-gray-200 dark:border-white/5 rounded-2xl p-8"
+          className="bg-white dark:bg-night-raised border border-gray-200 dark:border-white/5 rounded-2xl p-8 shadow-sm dark:shadow-none"
         >
           {isSubmitted ? (
             <motion.div
@@ -127,6 +115,9 @@ export function Contact() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Anti-spam Web3Forms : champ invisible que seuls les robots cochent */}
+              <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
                   Nom
@@ -138,7 +129,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-[#0f0f14] border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#6366f1] transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-night-alt border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent transition-colors"
                   placeholder="Votre nom"
                 />
               </div>
@@ -154,7 +145,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white dark:bg-[#0f0f14] border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#6366f1] transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-night-alt border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent transition-colors"
                   placeholder="votre.email@example.com"
                 />
               </div>
@@ -170,7 +161,7 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#0f0f14] border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#6366f1] transition-all resize-none"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-night-alt border border-gray-300 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-accent transition-colors resize-none"
                   placeholder="Votre message..."
                 />
               </div>
@@ -180,11 +171,20 @@ export function Contact() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isLoading}
-                className="w-full px-6 py-4 bg-[#6366f1] hover:bg-[#5558e3] text-white rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={20} />
                 {isLoading ? 'Envoi en cours...' : 'Envoyer le message'}
               </motion.button>
+
+              {hasError && (
+                <p role="alert" className="text-sm text-center text-red-600 dark:text-red-400">
+                  L'envoi a échoué. Réessayez, ou écrivez-moi directement à{' '}
+                  <a href="mailto:lucachaboissier@outlook.fr" className="underline hover:text-accent">
+                    lucachaboissier@outlook.fr
+                  </a>.
+                </p>
+              )}
             </form>
           )}
         </motion.div>

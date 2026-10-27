@@ -1,25 +1,16 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
+import { SectionHeading } from '../ui/SectionHeading';
 
 export function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 px-6 lg:px-12 relative overflow-hidden bg-white dark:bg-[#0a0a0f]">
+    <section id="about" className="py-24 px-6 lg:px-12 relative overflow-hidden bg-white dark:bg-night">
       <div className="max-w-5xl mx-auto relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
-            À propos de moi
-          </h2>
-          <div className="w-16 h-1 bg-[#6366f1] mx-auto rounded-full"></div>
-        </motion.div>
+        <SectionHeading title="À propos de moi" />
 
         <div className="gap-12 items-start mb-16">
           <motion.div
@@ -30,20 +21,21 @@ export function About() {
           >
             <p>
               J'ai débuté mon parcours de développeur avec le BTS SIO. C'est là que j'ai posé mes premières bases en{' '}
-              <span className="text-[#6366f1] font-semibold">PHP</span> et{' '}
-              <span className="text-[#6366f1] font-semibold">Laravel</span>, avant de faire de{' '}
-              <span className="text-[#6366f1] font-semibold">Symfony</span> ma spécialité au fil de mes expériences en stage et en alternance.
+              <span className="text-accent font-semibold">PHP</span> et{' '}
+              <span className="text-accent font-semibold">Laravel</span>, avant de faire de{' '}
+              <span className="text-accent font-semibold">Symfony</span> ma spécialité au fil de mes expériences en stage et en alternance.
             </p>
             <p>
               Pour avoir une vision complète des projets, je ne me suis pas limité au back-end. J'ai exploré le{' '}
-              <span className="text-[#6366f1] font-semibold">développement mobile</span> et la manipulation d'{''}
-              <span className="text-[#6366f1] font-semibold">APIs</span> pour être capable de créer des interfaces modernes et réactives.
+              <span className="text-accent font-semibold">développement mobile</span> et la manipulation d'{''}
+              <span className="text-accent font-semibold">APIs</span> pour être capable de créer des interfaces modernes et réactives.
             </p>
             <p>
-              Fort de deux ans d'alternance chez <span className="text-[#6366f1] font-semibold">APRIL Marine</span> sur des APIs métier et de mon <span className="text-[#6366f1] font-semibold">Mastère</span> qui touche à sa fin, je recherche aujourd'hui d'un poste de{' '}
-              <span className="text-[#6366f1] font-semibold">développeur</span>, idéalement en{' '}
-              <span className="text-[#6366f1] font-semibold">CDI</span>, disponible{' '}
-              <span className="text-[#6366f1] font-semibold">immédiatement</span>, pour m'investir pleinement dans vos méthodes et vos projets.
+              Fort de deux ans d'alternance chez <span className="text-accent font-semibold">APRIL Marine</span> sur des APIs métier et de mon{' '}
+              <span className="text-accent font-semibold">Mastère Expert en Développement Full Stack (Bac+5)</span>, je recherche aujourd'hui un poste de{' '}
+              <span className="text-accent font-semibold">développeur</span>, idéalement en{' '}
+              <span className="text-accent font-semibold">CDI</span>. Disponible{' '}
+              <span className="text-accent font-semibold">immédiatement</span>, j'ai hâte de m'investir pleinement dans vos méthodes et vos projets.
             </p>
           </motion.div>
         </div>
