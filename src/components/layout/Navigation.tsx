@@ -61,11 +61,15 @@ export function Navigation() {
           <motion.a
             href="#hero"
             onClick={(e) => handleNavClick(e, '#hero')}
-            className="text-xl font-bold tracking-tight cursor-pointer"
+            className="block cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Luca Chaboissier, retour en haut de la page"
           >
-            <span className="text-gray-900 dark:text-white">LC</span>
+            <svg viewBox="0 0 64 64" className="w-9 h-9 rounded-full dark:ring-1 dark:ring-white/20" aria-hidden="true">
+              <circle cx="32" cy="32" r="32" fill="#000" />
+              <path d="M27 19v25h13" fill="none" stroke="#fff" strokeWidth="5" strokeLinecap="square" />
+            </svg>
           </motion.a>
 
           <div className="hidden md:flex items-center gap-8">
