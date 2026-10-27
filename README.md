@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# Luca Chaboissier — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Développeur Backend PHP / Symfony · Nantes / Vendée · Disponible immédiatement
 
-Currently, two official plugins are available:
+**🌐 [lchbssr.github.io](https://lchbssr.github.io/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![Aperçu du portfolio](public/og-image.png)](https://lchbssr.github.io/)
 
-## React Compiler
+Portfolio personnel présentant mon parcours (2 ans d'alternance chez APRIL Marine sur des APIs métier, Mastère Expert en Développement Full Stack), mes compétences et mes projets.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Stack
 
-## Expanding the ESLint configuration
+| Domaine | Outils |
+|---|---|
+| Framework | [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
+| Build | [Vite 7](https://vite.dev/) (SWC) |
+| Style | [Tailwind CSS 4](https://tailwindcss.com/) |
+| Animations | [Motion](https://motion.dev/) |
+| Icônes | [Lucide](https://lucide.dev/), [Simple Icons](https://simpleicons.org/) |
+| Formulaire | [Web3Forms](https://web3forms.com/) |
+| Déploiement | GitHub Actions → GitHub Pages |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Fonctionnalités
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Thème clair / sombre, qui suit la préférence système et mémorise le choix de l'utilisateur, sans flash au chargement
+- Frises chronologiques des expériences et formations
+- Galerie d'images des projets, navigable au clavier (← → Échap)
+- Formulaire de contact fonctionnel, sans backend
+- Optimisé pour le partage et le référencement : balises Open Graph, données structurées `Person`, images WebP chargées à la demande
+- Accessible : animations réduites si le système le demande, galerie en `dialog` avec gestion du focus, libellés ARIA en français
+- Aucune ressource externe chargée : logos et images sont servis par le site lui-même
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Pour modifier le contenu (expériences, formations, compétences), il suffit d'éditer les fichiers de `src/data/`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Structure
+
+```
+src/
+├── components/
+│   ├── layout/      # Navigation, Footer
+│   ├── sections/    # Hero, About, Experience, Formation, Skills, Projects, Contact
+│   └── ui/          # Composants réutilisables (SectionHeading, Timeline, ImageGallery)
+├── contexts/        # ThemeContext (clair / sombre)
+├── data/            # Contenu : expériences, formations, compétences
+├── lib/             # Utilitaires
+├── App.tsx
+└── main.tsx
+public/
+├── assets/          # Photo de profil
+├── cv/              # CV au format PDF
+├── projects/        # Captures des projets (WebP)
+└── skills/          # Logos des technologies (SVG, hébergés localement)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Lancer le projet
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Prérequis : Node.js 20 ou plus.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev        # serveur de développement sur http://localhost:5173
+npm run build      # vérification TypeScript + build de production dans dist/
+npm run preview    # prévisualise le build de production
+npm run lint       # ESLint
 ```
+
+## Déploiement
+
+Chaque push sur `main` déclenche le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), qui vérifie le code (ESLint), build le site et le publie sur GitHub Pages.
+
+## Contact
+
+- [lucachaboissier@outlook.fr](mailto:lucachaboissier@outlook.fr)
+- [LinkedIn](https://www.linkedin.com/in/luca-chaboissier/)
+- [GitHub](https://github.com/lchbssr)
