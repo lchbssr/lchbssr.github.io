@@ -1,3 +1,4 @@
+import { MotionConfig } from 'motion/react';
 import { Navigation } from './components/layout/Navigation';
 import { Hero } from './components/sections/Hero';
 import { About } from "./components/sections/About";
@@ -12,21 +13,24 @@ import { ThemeProvider } from './contexts/ThemeContext';
 function App() {
   return (
       <ThemeProvider>
-          <div className="min-h-screen bg-gray-50 dark:bg-[#0f0f14] text-gray-900 dark:text-white transition-colors duration-300">
-              <Navigation />
+          {/* Désactive les animations de mouvement si l'utilisateur l'a demandé à son système */}
+          <MotionConfig reducedMotion="user">
+              <div className="min-h-screen bg-gray-50 dark:bg-night-alt text-gray-900 dark:text-white transition-colors duration-300">
+                  <Navigation />
 
-              <main>
-                  <Hero />
-                  <About />
-                  <Experience />
-                  <Formation />
-                  <Skills />
-                  <Projects />
-                  <Contact />
-              </main>
+                  <main>
+                      <Hero />
+                      <About />
+                      <Experience />
+                      <Projects />
+                      <Skills />
+                      <Formation />
+                      <Contact />
+                  </main>
 
-              <Footer />
-          </div>
+                  <Footer />
+              </div>
+          </MotionConfig>
       </ThemeProvider>
   );
 }
