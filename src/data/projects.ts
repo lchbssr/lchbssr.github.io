@@ -2,6 +2,18 @@ import type { Project } from './types';
 
 export const projects: Project[] = [
     {
+        title: 'Miamo',
+        type: { fr: 'Application Web', en: 'Web application' },
+        description: {
+            fr: 'Site de commande d\'un fast-food fictif : Carte de 48 aliments avec filtres et allergènes, atelier pour composer son burger, panier avec paiement fictif et programme de fidélité, sons et musique générés avec Web Audio API.',
+            en: 'Ordering website for a fictional fast-food restaurant: 48-item menu with filters and allergens, a workshop to build your own burger, a cart with mock checkout and a loyalty program, sounds and music generated with Web Audio API.',
+        },
+        image: './projects/miamo.webp',
+        technologies: ['Nuxt', 'Vue', 'TypeScript'],
+        liveUrl: 'https://lchbssr.github.io/Miamo/',
+        codeUrl: 'https://github.com/lchbssr/Miamo',
+    },
+    {
         title: 'Lofold',
         type: { fr: 'Application Web', en: 'Web application' },
         description: {
