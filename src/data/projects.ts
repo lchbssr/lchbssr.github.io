@@ -2,6 +2,18 @@ import type { Project } from './types';
 
 export const projects: Project[] = [
     {
+        title: 'Lofold',
+        type: { fr: 'Application Web', en: 'Web application' },
+        description: {
+            fr: 'Générateur et éditeur de musique lo-fi : Morceaux générés à partir d\'une seed et partageables par lien, avec un éditeur simple ou note par note, décors en pixel art avec météo.',
+            en: 'Lo-fi music generator and editor: Tracks generated from a seed and shareable by link, with a simple or note-by-note editor, pixel art scenes with weather.',
+        },
+        image: './projects/lofold.webp',
+        technologies: ['React', 'TypeScript', 'Tone.js', 'Tailwind'],
+        liveUrl: 'https://lchbssr.github.io/Lofold/',
+        codeUrl: 'https://github.com/lchbssr/Lofold',
+    },
+    {
         title: 'Booking API',
         type: { fr: 'API Backend', en: 'Backend API' },
         description: {
