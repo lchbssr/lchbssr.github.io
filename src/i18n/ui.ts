@@ -31,7 +31,8 @@ const fr = {
         intro: 'Développeur backend, je conçois et fais évoluer des APIs métier fiables et maintenables. Spécialisé en **PHP/Symfony** et **API Platform**, je m\'appuie sur **PostgreSQL**, **Docker** et **RabbitMQ**, avec une vraie appétence pour la qualité du code et la réduction de la dette technique.',
         background: 'Voir mon parcours',
         contact: 'Me contacter',
-        cv: 'Télécharger mon CV',
+        cv: 'Voir mon CV',
+        cvFile: '/cv/CV%20-%20Luca%20CHABOISSIER%20-%20FR.pdf',
     },
     about: {
         title: 'À propos de moi',
@@ -124,7 +125,8 @@ const en: UiStrings = {
         intro: 'As a backend developer, I design and evolve reliable, maintainable business APIs. Specialised in **PHP/Symfony** and **API Platform**, I work with **PostgreSQL**, **Docker** and **RabbitMQ**, with a real taste for code quality and reducing technical debt.',
         background: 'See my background',
         contact: 'Contact me',
-        cv: 'Download my resume (in French)',
+        cv: 'View my resume',
+        cvFile: '/cv/CV%20-%20Luca%20CHABOISSIER%20-%20EN.pdf',
     },
     about: {
         title: 'About me',

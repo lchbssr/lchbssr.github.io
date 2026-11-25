@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Download, Mail, FileText, MapPin, Car } from 'lucide-react';
+import { Eye, Mail, FileText, MapPin, Car } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { highlight } from '../../lib/highlight';
 
@@ -114,13 +114,14 @@ export function Hero() {
           </motion.a>
 
           <motion.a
-              href="/cv/CV_Luca_Chaboissier.pdf"
-              download="CV_Luca_Chaboissier.pdf"
+              href={t.hero.cvFile}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 border-2 border-gray-300 dark:border-white/20 hover:border-gray-400 dark:hover:border-white/40 text-gray-900 dark:text-white rounded-full font-medium transition-colors duration-200 flex items-center gap-2"
           >
-            <Download size={20} />
+            <Eye size={20} />
             {t.hero.cv}
           </motion.a>
         </motion.div>
